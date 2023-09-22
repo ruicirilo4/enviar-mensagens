@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Mensagens</title>
+    <style>
+/* styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #333;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:focus {
+  outline: none;
+}
+
+
+    </style>
+</head>
+<body>
+    <h1>Enviar Mensagens</h1>
+    
+    <form action="/enviar-sms" method="POST">
+        <label for="phoneNumber">Número de Telefone:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" required>
+        <br>
+        <label for="message">Mensagem:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <br>
+        <button type="submit">Enviar Mensagem</button>
+    </form>
+
+    <br>
+
+    <button onclick="enviarMensagemBitcoin()">Enviar Mensagem com valor Do Bitcoin</button>
+
+    <script>
+        // Função para enviar mensagem com Bitcoin
+        async function enviarMensagemBitcoin() {
+            const response = await fetch('/enviar-mensagem-bitcoin');
+            const data = await response.text();
+            alert(data);
+        }
+    </script>
+</body>
+</html>
